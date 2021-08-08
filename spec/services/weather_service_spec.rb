@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe WeatherService do
+RSpec.describe 'Weather Service Spec' do
   it 'will return hourly/daily and current weather for provided location', :vcr do
     response = WeatherService.get_forecast_data(39.742043, -104.991531)
     expect(response).to be_a(Hash)

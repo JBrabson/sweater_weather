@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Geocode Address Services Spec' do
+RSpec.describe 'Geocode Address Service Spec' do
   it 'can search by location to return latitude/longitude coordinates' do
     location = 'Denver,CO'
     response = GeocodeService.get_lat_long(location)
