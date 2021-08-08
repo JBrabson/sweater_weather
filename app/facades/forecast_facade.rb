@@ -1,10 +1,10 @@
 class ForecastFacade
-  def self.method(location)
+  def self.get_forecast(location)
     lat_lon = GeocodeService.get_lat_long(location)
-    binding.pry
-    forecast = WeatherService.get_forecast_data(lat_lon[:lat], lat_lon[:lon])
-
-    Forcast.new(forecast)
+    lat = lat_lon[:results][0][:locations][0][:latLng][:lat]
+    lon = lat_lon[:results][0][:locations][0][:latLng][:lng]
+    forecast = WeatherService.get_forecast_data(lat, lon)
+    Forecast.new(forecast)
   end
 end
 

@@ -2,13 +2,47 @@ require 'rails_helper'
 
 RSpec.describe "Api::V1::Forecasts", type: :request do
   describe "happy path" do
-    it '' do
-      get "/api/v1/forecast?location=denver,co"
-
-      expect(response).to be_successful
+    it 'returns forecast when provided valid location' do
+      get '/api/v1/forecast', params: {location:'Denver,CO'}
       forecast = JSON.parse(response.body, symbolize_names: true)
-      #  pry
-      # expect(forecast).to have_key(:data)
+      expect(response).to be_successful
+      expect(forecast).to have_key(:data)
+      expect(forecast[:data]).to have_key(:id)
+      expect(forecast[:data]).to have_key(:type)
+      expect(forecast[:data]).to have_key(:attributes)
+
+      expect(forecast[:data][:attributes]).to have_key(:current_weather)
+      expect(forecast[:data][:attributes][:current_weather]).to be_a(Hash)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:datetime)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:sunrise)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:sunset)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:temperature)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:feels_like)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:humidity)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:uvi)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:visibility)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:conditions)
+      expect(forecast[:data][:attributes][:current_weather]).to have_key(:icon)
+
+      expect(forecast[:data][:attributes]).to have_key(:daily_weather)
+      expect(forecast[:data][:attributes][:daily_weather]).to be_an(Array)
+      expect(forecast[:data][:attributes][:daily_weather].count).to eq(5)
+      expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:date)
+      expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:sunrise)
+      expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:sunset)
+      expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:max_temp)
+      expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:min_temp)
+      expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:conditions)
+      expect(forecast[:data][:attributes][:daily_weather][0]).to have_key(:icon)
+
+      expect(forecast[:data][:attributes]).to have_key(:hourly_weather)
+      expect(forecast[:data][:attributes][:hourly_weather]).to be_an(Array)
+      expect(forecast[:data][:attributes][:hourly_weather].count).to eq(8)
+      expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:time)
+      expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:temperature)
+      expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:conditions)
+      expect(forecast[:data][:attributes][:hourly_weather][0]).to have_key(:icon)
+
       #
       # expect(forecast).to be_a()
       #
@@ -16,3 +50,4 @@ RSpec.describe "Api::V1::Forecasts", type: :request do
     end
   end
 end
+#sad path?
