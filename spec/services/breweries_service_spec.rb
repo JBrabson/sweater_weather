@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '' do
+RSpec.describe 'Breweries Service' do
   it 'can search by city and return specified number of breweries ' do
     location = 'denver'
     response = BreweriesService.get_breweries(location)
