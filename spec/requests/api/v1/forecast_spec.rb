@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Api::V1::Forecasts", type: :request do
   describe "happy path" do
-    it 'returns forecast when provided valid location' do
+    it 'returns forecast when provided valid location', :vcr do
       get '/api/v1/forecast', params: {location:'Denver,CO'}
       forecast = JSON.parse(response.body, symbolize_names: true)
       expect(response).to be_successful
