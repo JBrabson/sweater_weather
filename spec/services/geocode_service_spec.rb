@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Geocode Address Service Spec' do
-  it 'can search by location to return latitude/longitude coordinates' do
+  it 'can search by location to return latitude/longitude coordinates', :vcr do
     location = 'Denver,CO'
     response = GeocodeService.get_lat_long(location)
     expect(response).to be_a(Hash)

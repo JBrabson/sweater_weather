@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Api::V1::Forecasts", type: :request do
   describe "happy path" do
-    it 'returns current weather and breweries of specified count based on user input' do
+    it 'returns current weather and breweries of specified count based on user input', :vcr do
       location = 'denver,co'
       quantity = 2
       get '/api/v1/breweries', params: {location: location, quantity: quantity}
