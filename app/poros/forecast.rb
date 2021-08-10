@@ -3,7 +3,7 @@ class Forecast
               :current_weather,
               :daily_weather,
               :hourly_weather
-
+#add type
   def initialize(attributes)
     @id = nil
     @current_weather = create_current(attributes[:current])
@@ -16,6 +16,7 @@ class Forecast
       datetime: Time.at(data[:dt]).to_s,
       sunrise: Time.at(data[:sunrise]).to_s,
       sunset: Time.at(data[:sunset]).to_s,
+      #double check time format
       temperature: data[:temp],
       feels_like: data[:feels_like],
       humidity: data[:humidity],
@@ -30,6 +31,7 @@ class Forecast
     data.map do |day|
       {
          date: Time.at(day[:dt]).strftime("%F"),
+         #double check time format
          sunrise: Time.at(day[:sunrise]).to_s,
          sunset: Time.at(day[:sunset]).to_s,
          max_temp: day[:temp][:max],
@@ -44,12 +46,11 @@ class Forecast
     data.map do |hour|
       {
         time: Time.at(hour[:dt]).strftime("%T"),
+        #double check time format
         temperature: hour[:temp],
         conditions: hour[:weather][0][:description],
         icon: hour[:weather][0][:icon]
       }
     end
   end
-
-
 end

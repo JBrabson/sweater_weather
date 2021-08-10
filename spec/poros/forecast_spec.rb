@@ -7,19 +7,16 @@ describe Forecast do
       @forecast = Forecast.new(info)
     end
 
-    xit 'returns specified attributes only and no unnecessary data' do
-      expect(@forecast[:data][:attributes].count).to eq(3)
-      expect(@forecast[:data][:attributes][:current_weather].count).to eq(10)
-      expect(@forecast[:data][:attributes][:daily_weather].count).to eq(5)
-      expect(@forecast[:data][:attributes][:daily_weather][0].count).to eq(7)
-      expect(@forecast[:data][:attributes][:hourly_weather].count).to eq(8)
-      expect(@forecast[:data][:attributes][:hourly_weather][0].count).to eq(4)
+    describe 'Forecast' do
+      it 'class and id', :vcr do
+        expect(@forecast.id).to eq(nil)
+        expect(@forecast).to be_an_instance_of(Forecast)
+      end
     end
 
     describe 'Current Weather' do
-      it 'is a hash and contains current weather stats' do
-        expect(@forecast).to be_a(Forecast)
-        expect(@forecast.id).to eq(nil)
+      it 'returns specified attributes and no unneccessary data', :vcr do
+        expect(@forecast.current_weather.count).to eq(10)
         expect(@forecast.current_weather).to have_key(:datetime)
         expect(@forecast.current_weather).to have_key(:sunrise)
         expect(@forecast.current_weather).to have_key(:sunset)
@@ -57,9 +54,11 @@ describe Forecast do
     end
 
     describe 'Daily Weather' do
-      it 'is an array and contains weather stats for next five days' do
+      it 'returns specified attributes and no unneccessary data for next five days', :vcr do
         expect(@forecast.daily_weather.count).to eq(5)
-        day = @forecast.daily_weather.first
+        expect(@forecast.daily_weather).to be_an(Array)
+
+        @forecast.daily_weather.each do |day|
           expect(day).to have_key(:date)
           expect(day).to have_key(:sunrise)
           expect(day).to have_key(:sunset)
@@ -75,7 +74,9 @@ describe Forecast do
           expect(day[:min_temp]).to be_a(Float)
           expect(day[:conditions]).to be_a(String)
           expect(day[:icon]).to be_a(String)
+        end
 
+          day = @forecast.daily_weather.first
           expect(day[:date]).to eq('2021-08-07')
           expect(day[:sunrise]).to eq('2021-08-07 06:04:50 -0600')
           expect(day[:sunset]).to eq('2021-08-07 20:06:35 -0600')
@@ -88,9 +89,11 @@ describe Forecast do
     end
 
     describe "Hourly Weather" do
-      it 'is an array and contains weather stats for next 8 hours' do
+      it 'is an array and contains weather stats for next 8 hours', :vcr do
         expect(@forecast.hourly_weather.count).to eq(8)
-        hour = @forecast.hourly_weather.first
+        expect(@forecast.hourly_weather).to be_an(Array)
+
+        @forecast.hourly_weather.each do |hour|
           expect(hour).to have_key(:time)
           expect(hour).to have_key(:temperature)
           expect(hour).to have_key(:conditions)
@@ -100,7 +103,9 @@ describe Forecast do
           expect(hour[:temperature]).to be_a(Float)
           expect(hour[:conditions]).to be_a(String)
           expect(hour[:icon]).to be_a(String)
+        end
 
+          hour = @forecast.hourly_weather.first
           expect(hour[:time]).to eq('13:00:00')
           expect(hour[:temperature]).to eq(82.42)
           expect(hour[:conditions]).to eq('few clouds')

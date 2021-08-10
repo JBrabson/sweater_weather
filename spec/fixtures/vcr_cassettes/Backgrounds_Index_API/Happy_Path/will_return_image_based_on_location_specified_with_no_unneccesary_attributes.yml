@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.unsplash.com/photos/random?client_id=UYt3rw8cJDWnFmmqoHp2oSkLnlZ0PYvLdCiAK3FgeLc&query=denver,co
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.6.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1171'
+      Server:
+      - Cowboy
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Request-Method:
+      - "*"
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Content-Type:
+      - application/json
+      Etag:
+      - W/"aef75e0bac5eb2c39ed50d7623c4afd4"
+      X-Ratelimit-Limit:
+      - '50'
+      X-Ratelimit-Remaining:
+      - '42'
+      X-Request-Id:
+      - a2c7d77d-6b12-42be-9e24-81a418132b83
+      X-Runtime:
+      - '0.048837'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Via:
+      - 1.1 vegur, 1.1 varnish, 1.1 varnish
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 10 Aug 2021 01:42:29 GMT
+      Age:
+      - '0'
+      X-Served-By:
+      - cache-dca17754-DCA, cache-den8269-DEN
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      X-Timer:
+      - S1628559749.926268,VS0,VE104
+      Vary:
+      - Accept-Encoding, Origin,Authorization
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"AvwA2iwDHIE","created_at":"2019-12-15T13:10:41-05:00","updated_at":"2021-08-09T03:13:34-04:00","promoted_at":null,"width":5120,"height":3840,"color":"#d9d9d9","blur_hash":"LPHB_ByCShr=_Na1V[of?bM{aekD","description":"Beautiful
+        wall art in Denver.","alt_description":"green and red bird flying over pink
+        cherry blossom print building","urls":{"raw":"https://images.unsplash.com/photo-1576433381799-2f46b38f0b61?ixid=MnwyNTIyNzl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Mjg1NTk3NDg\u0026ixlib=rb-1.2.1","full":"https://images.unsplash.com/photo-1576433381799-2f46b38f0b61?crop=entropy\u0026cs=srgb\u0026fm=jpg\u0026ixid=MnwyNTIyNzl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Mjg1NTk3NDg\u0026ixlib=rb-1.2.1\u0026q=85","regular":"https://images.unsplash.com/photo-1576433381799-2f46b38f0b61?crop=entropy\u0026cs=tinysrgb\u0026fit=max\u0026fm=jpg\u0026ixid=MnwyNTIyNzl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Mjg1NTk3NDk\u0026ixlib=rb-1.2.1\u0026q=80\u0026w=1080","small":"https://images.unsplash.com/photo-1576433381799-2f46b38f0b61?crop=entropy\u0026cs=tinysrgb\u0026fit=max\u0026fm=jpg\u0026ixid=MnwyNTIyNzl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Mjg1NTk3NDk\u0026ixlib=rb-1.2.1\u0026q=80\u0026w=400","thumb":"https://images.unsplash.com/photo-1576433381799-2f46b38f0b61?crop=entropy\u0026cs=tinysrgb\u0026fit=max\u0026fm=jpg\u0026ixid=MnwyNTIyNzl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Mjg1NTk3NDk\u0026ixlib=rb-1.2.1\u0026q=80\u0026w=200"},"links":{"self":"https://api.unsplash.com/photos/AvwA2iwDHIE","html":"https://unsplash.com/photos/AvwA2iwDHIE","download":"https://unsplash.com/photos/AvwA2iwDHIE/download","download_location":"https://api.unsplash.com/photos/AvwA2iwDHIE/download?ixid=MnwyNTIyNzl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Mjg1NTk3NDk"},"categories":[],"likes":59,"liked_by_user":false,"current_user_collections":[],"sponsorship":null,"user":{"id":"jVGnjy5TC54","updated_at":"2021-08-08T07:31:30-04:00","username":"jenspeter","name":"Jens
+        Peter Olesen","first_name":"Jens Peter","last_name":"Olesen","twitter_username":"creaticdesign","portfolio_url":"https://www.creatic.design","bio":"Graphic
+        designer and world traveller. #NoRouteExplore","location":"World traveller","links":{"self":"https://api.unsplash.com/users/jenspeter","html":"https://unsplash.com/@jenspeter","photos":"https://api.unsplash.com/users/jenspeter/photos","likes":"https://api.unsplash.com/users/jenspeter/likes","portfolio":"https://api.unsplash.com/users/jenspeter/portfolio","following":"https://api.unsplash.com/users/jenspeter/following","followers":"https://api.unsplash.com/users/jenspeter/followers"},"profile_image":{"small":"https://images.unsplash.com/profile-1554546870692-3c6ee502a86b?ixlib=rb-1.2.1\u0026q=80\u0026fm=jpg\u0026crop=faces\u0026cs=tinysrgb\u0026fit=crop\u0026h=32\u0026w=32","medium":"https://images.unsplash.com/profile-1554546870692-3c6ee502a86b?ixlib=rb-1.2.1\u0026q=80\u0026fm=jpg\u0026crop=faces\u0026cs=tinysrgb\u0026fit=crop\u0026h=64\u0026w=64","large":"https://images.unsplash.com/profile-1554546870692-3c6ee502a86b?ixlib=rb-1.2.1\u0026q=80\u0026fm=jpg\u0026crop=faces\u0026cs=tinysrgb\u0026fit=crop\u0026h=128\u0026w=128"},"instagram_username":"norouteexplore","total_collections":16,"total_likes":418,"total_photos":54,"accepted_tos":true,"for_hire":false,"social":{"instagram_username":"norouteexplore","portfolio_url":"https://www.creatic.design","twitter_username":"creaticdesign","paypal_email":null}},"exif":{"make":"HUAWEI","model":"BLA-L29","exposure_time":"1/415","aperture":"1.6","focal_length":"4.0","iso":50},"location":{"title":"Denver,
+        CO, USA","name":"Denver, CO, USA","city":"Denver","country":"United States","position":{"latitude":39.7392358,"longitude":-104.990251}},"views":180354,"downloads":1050}'
+  recorded_at: Tue, 10 Aug 2021 01:42:29 GMT
+recorded_with: VCR 6.0.0
