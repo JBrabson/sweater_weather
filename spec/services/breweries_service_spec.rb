@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Breweries Service' do
   it 'can search by city and return specified number of breweries', :vcr do
     location = 'denver'
-    response = BreweriesService.get_breweries(location)
+    response = BreweryService.get_breweries(location)
     expect(response).to be_an(Array)
 
     brewery_hash = response.first

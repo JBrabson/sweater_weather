@@ -1,4 +1,4 @@
-class Breweries
+class Brewery
   attr_reader :id,
               :name,
               :brewery_type
