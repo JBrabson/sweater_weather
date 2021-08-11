@@ -43,8 +43,8 @@ describe Forecast do
         expect(@forecast.current_weather[:datetime]).to eq("2021-08-07 13:56:43 -0600")
         expect(@forecast.current_weather[:sunrise]).to eq("2021-08-07 06:04:50 -0600")
         expect(@forecast.current_weather[:sunset]).to eq("2021-08-07 20:06:35 -0600")
-        expect(@forecast.current_weather[:temperature]).to eq(81.77)
-        expect(@forecast.current_weather[:feels_like]).to eq(80.26)
+        expect(@forecast.current_weather[:temperature]).to eq(81.8)
+        expect(@forecast.current_weather[:feels_like]).to eq(80.3)
         expect(@forecast.current_weather[:humidity]).to eq(29)
         expect(@forecast.current_weather[:uvi]).to eq(8.42)
         expect(@forecast.current_weather[:visibility]).to eq(10000)
@@ -80,7 +80,7 @@ describe Forecast do
           expect(day[:date]).to eq('2021-08-07')
           expect(day[:sunrise]).to eq('2021-08-07 06:04:50 -0600')
           expect(day[:sunset]).to eq('2021-08-07 20:06:35 -0600')
-          expect(day[:max_temp]).to eq(86.63)
+          expect(day[:max_temp]).to eq(86.6)
           expect(day[:min_temp]).to eq(68.9)
           expect(day[:conditions]).to eq('few clouds')
           expect(day[:icon]).to eq('02d')
@@ -107,7 +107,7 @@ describe Forecast do
 
           hour = @forecast.hourly_weather.first
           expect(hour[:time]).to eq('13:00:00')
-          expect(hour[:temperature]).to eq(82.42)
+          expect(hour[:temperature]).to eq(82.4)
           expect(hour[:conditions]).to eq('few clouds')
           expect(hour[:icon]).to eq('02d')
       end

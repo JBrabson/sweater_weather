@@ -4,10 +4,10 @@ RSpec.describe 'Mapquest Directions API' do
   it 'can return trip route based on specified origin and destination' do
     params = {
       from: 'Denver, CO',
-      to: 'Nashville, TN'
+      to: 'Nashville,TN'
     }
-
-    response = DirectionsService.get_directions(params[:from], params[:to])
+# edgecase for no spaces?
+    response = DirectionsService.get_route_info(params[:from], params[:to])
 
     expect(response).to have_key(:route)
     expect(response[:route]).to have_key(:formattedTime)

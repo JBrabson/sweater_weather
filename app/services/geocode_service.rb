@@ -1,5 +1,5 @@
 class GeocodeService
-  def self.get_lat_long(location)
+  def self.get_location_details(location)
     response = conn.get("/geocoding/v1/address?location=#{location}")
     JSON.parse(response.body, symbolize_names: true)
   end

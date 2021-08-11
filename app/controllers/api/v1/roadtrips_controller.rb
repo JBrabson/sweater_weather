@@ -2,8 +2,7 @@ class Api::V1::RoadtripsController < ApplicationController
   def create
     origin = params[:origin]
     destination = params[:destination]
-    api_key = params[:api_key]
-    # forecast = ForecastFacade.get_forecast(location)
-    # render json: ForecastSerializer.new(forecast)
+    roadtrip = RoadtripsFacade.get_trip_summary(origin, destination)
+    render json: RoadtripSerializer.new(roadtrip)
   end
 end

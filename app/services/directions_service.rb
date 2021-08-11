@@ -1,5 +1,5 @@
 class DirectionsService
-  def self.get_directions(origin, destination)
+  def self.get_route_info(origin, destination)
     response = conn.get("/directions/v2/route?from=#{origin}&to=#{destination}")
     JSON.parse(response.body, symbolize_names: true)
   end
@@ -10,3 +10,4 @@ class DirectionsService
     end
   end
 end
+#TO DO rename geo api key

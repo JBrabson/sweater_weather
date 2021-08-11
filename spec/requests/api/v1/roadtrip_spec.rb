@@ -15,10 +15,10 @@ RSpec.describe 'Api::V1::RoadTrip' do
     it 'returns road trip details based on specified start and destination points' do
       user_input = {
         origin: 'Denver,CO',
-        destination: 'Nashville,TN',
+        destination: 'Bailey,CO',
         api_key: @happy_user.api_key
       }
-      post '/api/v1/road_trip', params: user_input
+      post '/api/v1/roadtrip', params: user_input
 
       json = JSON.parse(response.body, symbolize_names: true)
 
@@ -30,6 +30,7 @@ RSpec.describe 'Api::V1::RoadTrip' do
       expect(json[:data][:attributes]).to have_key(:travel_time)
       expect(json[:data][:attributes]).to have_key(:weather_at_eta)
       expect(json[:data][:attributes][:weather_at_eta]).to have_key(:temperature)
+      #sad path for outside of date/hour range
       expect(json[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
 
       expect(json[:data][:attributes]).to be_a(Hash)
