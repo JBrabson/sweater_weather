@@ -16,7 +16,6 @@ class Forecast
       datetime: Time.at(data[:dt]).to_s,
       sunrise: Time.at(data[:sunrise]).to_s,
       sunset: Time.at(data[:sunset]).to_s,
-      #double check time format
       temperature: data[:temp].to_f.round(1),
       feels_like: data[:feels_like].to_f.round(1),
       humidity: data[:humidity],
@@ -31,7 +30,6 @@ class Forecast
     data.map do |day|
       {
          date: Time.at(day[:dt]).strftime("%F"),
-         #double check time format
          sunrise: Time.at(day[:sunrise]).to_s,
          sunset: Time.at(day[:sunset]).to_s,
          max_temp: day[:temp][:max].to_f.round(1),
@@ -46,7 +44,6 @@ class Forecast
     data.map do |hour|
       {
         time: Time.at(hour[:dt]).strftime("%T"),
-        #double check time format
         temperature: hour[:temp].to_f.round(1),
         conditions: hour[:weather][0][:description],
         icon: hour[:weather][0][:icon]

@@ -12,13 +12,13 @@ RSpec.describe 'Api::V1::RoadTrip' do
       @happy_user.update(api_key: SecureRandom.urlsafe_base64(24))
     end
 
-    it 'returns road trip details based on specified start and destination points' do
+    it 'returns road trip details based on specified start and destination points', :vcr do
       user_input = {
         origin: 'Denver,CO',
         destination: 'Bailey,CO',
         api_key: @happy_user.api_key
       }
-      post '/api/v1/roadtrip', params: user_input
+      post '/api/v1/road_trip', params: user_input
 
       json = JSON.parse(response.body, symbolize_names: true)
 

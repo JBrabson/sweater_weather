@@ -116,7 +116,8 @@ describe Forecast do
 
   describe 'sad path' do
     xit 'returns error when location params is invalid' do
-      get '/api/v1/forecast', params: {location: 'z'}
+      location = 'z'
+      get "/api/v1/forecasts", params: {location: location}
       forecast = JSON.parse(response.body, symbolize_names: true)
       expect(response).to eq(404)
       expect(forecast).to be_a(Hash)

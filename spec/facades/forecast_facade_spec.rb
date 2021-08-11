@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'Forecast Facade' do
-  it 'returns forecast for weather at provided location', :vcr do
+describe 'ForecastFacade' do
+  it 'returns forecast object for weather at provided location', :vcr do
     location = 'denver,co'
     forecast = ForecastFacade.get_forecast(location)
 

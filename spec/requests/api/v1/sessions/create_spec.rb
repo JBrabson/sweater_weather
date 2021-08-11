@@ -11,7 +11,7 @@ RSpec.describe 'Sessions' do
   end
 #TODO fix testing; passing in postman - error in rspec
   describe 'Happy Path' do
-    it 'create new session with valid params' do
+    it 'create new session with valid params', :vcr do
       headers = {
         'Content-Type': "application/json",
         'Accept': "application/json"

@@ -56,7 +56,7 @@ RSpec.describe "Api::V1::Forecasts", type: :request do
   end
 
   describe 'Sad Path' do
-    it 'returns error if no location provided' do
+    it 'returns error if no location provided', :vcr do
       get '/api/v1/forecast'
       expect(response.body).to eq("{\"error\":\"Location not provided. Please enter location to search.\"}")
       expect(response.status).to eq(400)

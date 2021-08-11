@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Mapquest Directions API' do
-  it 'can return trip route based on specified origin and destination' do
+  it 'can return trip route based on specified origin and destination', :vcr do
     params = {
       from: 'Denver, CO',
       to: 'Nashville,TN'

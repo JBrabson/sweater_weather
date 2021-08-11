@@ -6,7 +6,7 @@ class GeocodeService
 
   def self.conn
     Faraday.new(url: 'http://www.mapquestapi.com') do |faraday|
-      faraday.params['key'] = ENV['GEO_API_KEY']
+      faraday.params['key'] = ENV['MQ_API_KEY']
       faraday.params['maxResults'] = 1
     end
   end

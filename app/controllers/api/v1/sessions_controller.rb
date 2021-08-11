@@ -10,9 +10,4 @@ class Api::V1::SessionsController < ApplicationController
         render json: {error: 'E-mail and/or password are incorrect. Please try again.'}, status: 400
       end
   end
-
-  # private
-  # def _params
-  #   params.permit(:)
-  # end
 end

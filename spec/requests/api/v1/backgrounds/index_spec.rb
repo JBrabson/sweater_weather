@@ -46,10 +46,10 @@ RSpec.describe 'Backgrounds Index API' do
       expect(image[:data][:id]).to be(nil)
       expect(image[:data][:type]).to eq('image')
       expect(image[:data][:attributes][:image][:location]).to eq(location)
-      expect(image[:data][:attributes][:image][:image_url]).to eq('https://images.unsplash.com/photo-1576433381799-2f46b38f0b61?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNTIyNzl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Mjg1NTk3NDg&ixlib=rb-1.2.1&q=85')
+      expect(image[:data][:attributes][:image][:image_url]).to eq('https://images.unsplash.com/photo-1614057695473-108bafc8d791?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNTIyNzl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Mjg2NTk5MDE&ixlib=rb-1.2.1&q=85')
       expect(image[:data][:attributes][:image][:credit][:source]).to eq('https://unsplash.com')
-      expect(image[:data][:attributes][:image][:credit][:author]).to eq('Jens Peter Olesen')
-      expect(image[:data][:attributes][:image][:credit][:portfolio_url]).to eq('https://api.unsplash.com/users/jenspeter/portfolio')
+      expect(image[:data][:attributes][:image][:credit][:author]).to eq('Frankie Lopez')
+      expect(image[:data][:attributes][:image][:credit][:portfolio_url]).to eq('https://api.unsplash.com/users/frankielopez/portfolio')
       expect(image[:data][:attributes][:image][:credit][:logo]).to eq('https://unsplash.com/blog/content/images/max/2560/1-ElwDA92icHLARE8v2HevvA.jpeg')
     end
   end

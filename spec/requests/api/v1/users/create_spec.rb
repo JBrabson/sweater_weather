@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User Create' do
   describe 'Happy Path' do
-    it 'should return a valid response' do
+    it 'should return a valid response', :vcr do
       info = {
         'email': 'brainisgone@turingrightnow.com',
         'password': 'yeet123',
