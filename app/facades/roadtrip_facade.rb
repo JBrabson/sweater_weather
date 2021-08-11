@@ -1,4 +1,4 @@
-class RoadtripsFacade
+class RoadtripFacade
   def self.get_trip_summary(origin, destination)
     destination_coords = GeocodeFacade.get_lat_long(destination)
 

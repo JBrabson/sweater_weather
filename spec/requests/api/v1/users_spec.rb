@@ -28,7 +28,7 @@ RSpec.describe 'User Create' do
     expect(json[:data][:attributes][:email]).to be_a(String)
     expect(json[:data][:attributes][:api_key]).to be_a(String)
 
-    expect(json[:data][:type]).to eq('users')
+    expect(json[:data][:type]).to eq('user')
     # expect(json[:data][:id]).to eq()
     expect(json[:data][:attributes][:email]).to eq(info[:email])
     # expect(json[:data][:attributes][:api_key]).to eq(info[:api_key])

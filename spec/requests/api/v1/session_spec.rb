@@ -40,7 +40,7 @@ RSpec.describe 'Sessions' do
       expect(json[:data][:attributes][:email]).to be_a(String)
       expect(json[:data][:attributes][:api_key]).to be_a(String)
 
-      expect(json[:data][:type]).to eq('users')
+      expect(json[:data][:type]).to eq('user')
       expect(json[:data][:id]).to eq("#{@user.id}")
       expect(json[:data][:attributes][:email]).to eq(@user.email)
       expect(json[:data][:attributes][:api_key]).to eq(@user.api_key)

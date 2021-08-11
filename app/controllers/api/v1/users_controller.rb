@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
     #   #   || user.password.nil? && user.password_confirmation.nil?
       # render json: {error: 'Missing a field. Please complete input.'}, status: 400
     else user.save
-      render json: UsersSerializer.new(user), status: 201
+      render json: UserSerializer.new(user), status: 201
     end
     #TODO edgecase for all? combinations of missing/filled fields
   end

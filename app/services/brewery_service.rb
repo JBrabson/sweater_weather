@@ -1,4 +1,4 @@
-class BreweriesService
+class BreweryService
   def self.get_breweries(location)
     response = conn.get("/breweries?by_city=#{location}")
     JSON.parse(response.body, symbolize_names: true)
