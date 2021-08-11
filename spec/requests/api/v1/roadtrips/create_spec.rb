@@ -49,8 +49,35 @@ RSpec.describe 'Api::V1::RoadTrip' do
       # expect(json[:data][:attributes][:weather_at_eta]).to eq(Hash)
       # expect(json[:data][:attributes][:weather_at_eta][:temperature]).to eq(Float)
       # expect(json[:data][:attributes][:weather_at_eta][:conditions]).to eq(String)
-#TODO above after service/facades
+#TODO above
 
+    end
+  end
+
+  describe 'Sad Path' do
+    before :each do
+      @happy_user = User.create(
+        email: 'happyface@emojis.com',
+        password: 'yellow',
+        password_confirmation: 'yellow'
+      )
+
+      @happy_user.update(api_key: SecureRandom.urlsafe_base64(24))
+    end
+
+    it 'returns error if no API key provided', :vcr do
+      user_input = {
+        origin: 'Denver,CO',
+        destination: 'Bailey,CO',
+        api_key: nil
+      }
+      post '/api/v1/road_trip', params: user_input
+
+      expect(response).to have_http_status(401)
+      expect(response.body).to eq("{\"error\":\"Not authorized.\"}")
+    end
+
+    xit 'returns error if origin or destination missing' do
     end
   end
 end

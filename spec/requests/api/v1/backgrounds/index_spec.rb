@@ -9,6 +9,7 @@ RSpec.describe 'Backgrounds Index API' do
       image = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to be_successful
+      expect(response).to have_http_status(200)
 
       expect(image).to be_a(Hash)
       expect(image[:data]).to be_a(Hash)

@@ -6,13 +6,15 @@ class Api::V1::UsersController < ApplicationController
     user.api_key = @key
     if user.password != user.password_confirmation
       render json: {error: 'Password and Password Confirmation do not match. Please try again.'}, status: 400
+    elsif user.email.nil? || user.password.nil? || user.password_confirmation.nil?
+      render json: {error: 'Missing field. Please provide all info and try again.'}, status: 400
     elsif User.find_by(email: user[:email]).present?
       render json: {error: 'Invalid email. Please try again.'}, status: 400
 #TODO elsif user.email.nil? || user.password.nil? && !user.password_confirmation.nil || user.password_confirmation.nil? && !user.password.nil?
 #   || user.password.nil? && user.password_confirmation.nil?
 # render json: {error: 'Missing a field. Please complete input.'}, status: 400
     else user.save
-      render json: UserSerializer.new(user), status: 201
+      render json: UsersSerializer.new(user), status: 201
     end
   end
 

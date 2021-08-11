@@ -11,6 +11,7 @@ RSpec.describe "Api::V1::Forecasts", type: :request do
       expect(forecast).to have_key(:data)
       expect(forecast[:data]).to have_key(:id)
       expect(forecast[:data]).to have_key(:type)
+      expect(forecast[:data][:type]).to eq('forecast')
       expect(forecast[:data]).to have_key(:attributes)
       expect(forecast[:data][:attributes].count).to eq(3)
 

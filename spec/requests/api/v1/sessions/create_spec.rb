@@ -9,7 +9,7 @@ RSpec.describe 'Sessions' do
       api_key: '222222222222222222222222'
     )
   end
-#TODO fix testing; passing in postman - error in rspec
+
   describe 'Happy Path' do
     it 'create new session with valid params', :vcr do
       headers = {
@@ -32,7 +32,7 @@ RSpec.describe 'Sessions' do
       expect(json[:data]).to have_key(:attributes)
       expect(json[:data][:attributes]).to have_key(:email)
       expect(json[:data][:attributes]).to have_key(:api_key)
-      #expect(json[:data][:attributes]).to_not have_key(:password)
+      expect(json[:data][:attributes]).to_not have_key(:password)
 
       expect(json[:data][:type]).to be_a(String)
       expect(json[:data][:id]).to be_a(String)
@@ -40,7 +40,7 @@ RSpec.describe 'Sessions' do
       expect(json[:data][:attributes][:email]).to be_a(String)
       expect(json[:data][:attributes][:api_key]).to be_a(String)
 
-      expect(json[:data][:type]).to eq('user')
+      expect(json[:data][:type]).to eq('users')
       expect(json[:data][:id]).to eq("#{@user.id}")
       expect(json[:data][:attributes][:email]).to eq(@user.email)
       expect(json[:data][:attributes][:api_key]).to eq(@user.api_key)
