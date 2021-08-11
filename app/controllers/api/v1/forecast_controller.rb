@@ -1,7 +1,12 @@
 class Api::V1::ForecastController < ApplicationController
   def index
     location = params[:location]
-    forecast = ForecastFacade.get_forecast(location)
-    render json: ForecastSerializer.new(forecast)
+
+    if location.nil?
+      render json: {error: 'Location not provided. Please enter location to search.'}, status: 400
+    else
+      forecast = ForecastFacade.get_forecast(location)
+      render json: ForecastSerializer.new(forecast)
+    end
   end
 end
