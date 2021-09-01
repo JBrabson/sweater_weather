@@ -30,7 +30,6 @@ RSpec.describe 'Api::V1::RoadTrip' do
       expect(json[:data][:attributes]).to have_key(:travel_time)
       expect(json[:data][:attributes]).to have_key(:weather_at_eta)
       expect(json[:data][:attributes][:weather_at_eta]).to have_key(:temperature)
-      #sad path for outside of date/hour range
       expect(json[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
 
       expect(json[:data][:attributes]).to be_a(Hash)
@@ -45,15 +44,14 @@ RSpec.describe 'Api::V1::RoadTrip' do
       expect(json[:data][:type]).to eq('roadtrip')
       expect(json[:data][:attributes][:start_city]).to eq(user_input[:origin])
       expect(json[:data][:attributes][:end_city]).to eq(user_input[:destination])
-      # expect(json[:data][:attributes][:travel_time]).to eq(String)
-      # expect(json[:data][:attributes][:weather_at_eta]).to eq(Hash)
+      # expect(json[:data][:attributes][:travel_time]).to eq("3 hours, 31 minutes")
+      # expect(json[:data][:attributes][:weather_at_eta].count).to eq(2)
       # expect(json[:data][:attributes][:weather_at_eta][:temperature]).to eq(Float)
       # expect(json[:data][:attributes][:weather_at_eta][:conditions]).to eq(String)
-#TODO above
-
     end
   end
 
+  #sad path for outside of date/hour range
   describe 'Sad Path' do
     before :each do
       @happy_user = User.create(
@@ -77,7 +75,16 @@ RSpec.describe 'Api::V1::RoadTrip' do
       expect(response.body).to eq("{\"error\":\"Not authorized.\"}")
     end
 
-    xit 'returns error if origin or destination missing' do
+    it 'returns error if origin or destination missing', :vcr do
+      user_input = {
+        origin: '',
+        destination: 'Hayden,CO',
+        api_key: @happy_user.api_key
+      }
+      post '/api/v1/road_trip', params: user_input
+
+      expect(response).to have_http_status(400)
+      expect(response.body).to eq("{\"error\":\"Please be sure to input origin and destination fields.\"}")      
     end
   end
 end
